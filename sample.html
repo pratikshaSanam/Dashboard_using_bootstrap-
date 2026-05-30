@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Responsive Dashboard</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: rgba(240, 247, 251, 0.5);
+    }
+
+    /* Sidebar */
+    .sidebar {
+      background: #1fab6a;
+      min-height: 100vh;
+    }
+
+    @media (min-width: 992px) {
+      .main {
+        margin-left: 250px;
+      }
+      .sidebar {
+        width: 250px;
+        position: fixed;
+        top: 0;
+        left: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container-fluid">
+  <div class="row">
+
+    <!-- SIDEBAR -->
+    <aside class="col-lg-2 sidebar text-white d-none d-lg-block p-3">
+      <img src="/Screenshot 2026-01-06 153934.png" class="img-fluid mb-4">
+
+      <ul class="nav flex-column gap-2">
+        <li class="nav-item"><a class="nav-link text-white" href="#"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#"><i class="bi bi-grid me-2"></i>App</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#"><i class="bi bi-bar-chart me-2"></i>Chart</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#"><i class="bi bi-bootstrap me-2"></i>Bootstrap</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="#"><i class="bi bi-table me-2"></i>Table</a></li>
+      </ul>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="col-12 col-lg-10 main p-4">
+
+      <!-- HEADER -->
+      <div class="mb-4">
+        <h3 class="fw-bold">Dashboard</h3>
+        <p class="text-muted">Hi, Welcome Back Nick!</p>
+      </div>
+
+      <!-- ROW 1 -->
+      <div class="row g-3">
+
+        <!-- Total Revenue -->
+        <div class="col-12 col-md-6">
+          <div class="card shadow-sm h-100">
+            <div class="card-body">
+              <h5>Total Revenue</h5>
+              <div class="row">
+                <div class="col">
+                  <p class="text-muted mb-1">Net Premium</p>
+                  <h4>₹ 37,740</h4>
+                </div>
+                <div class="col">
+                  <p class="text-muted mb-1">Gross Premium</p>
+                  <h4>₹ 44,533</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Customers -->
+        <div class="col-12 col-md-6">
+          <div class="card shadow-sm h-100">
+            <div class="card-body">
+              <div class="row text-center">
+                <div class="col-6 col-lg-3">
+                  <i class="bi bi-people fs-2 text-success"></i>
+                  <h5>360</h5>
+                  <p class="text-muted">Customers</p>
+                </div>
+                <div class="col-6 col-lg-3">
+                  <i class="bi bi-people fs-2 text-success"></i>
+                  <h5>180</h5>
+                  <p class="text-muted">Agents</p>
+                </div>
+                <div class="col-6 col-lg-3">
+                  <i class="bi bi-people fs-2 text-success"></i>
+                  <h5>90</h5>
+                  <p class="text-muted">POSP</p>
+                </div>
+                <div class="col-6 col-lg-3">
+                  <i class="bi bi-people fs-2 text-success"></i>
+                  <h5>45</h5>
+                  <p class="text-muted">Claims</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ROW 2 -->
+      <div class="row g-3 mt-2">
+
+        <!-- Performance -->
+        <div class="col-12 col-lg-8">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5>Top Performance POSP</h5>
+
+              <div class="row mt-3">
+                <div class="  col-md-6 d-flex align-items-center gap-3">
+                  <i class="bi bi-people fs-2 text-success"></i>
+                  <div>
+                    <p class="mb-0 text-muted">People POSP</p>
+                    <h5>8</h5>
+                  </div>
+                </div>
+                <div class="col-md-6 d-flex align-items-center gap-3">
+                  <i class="bi bi-people fs-2 text-success"></i>
+                  <div>
+                    <p class="mb-0 text-muted">Active POSP</p>
+                    <h5>6</h5>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart -->
+        <div class="col-12 col-lg-4">
+          <div class="card shadow-sm text-center">
+            <div class="card-body">
+              <h5>Claims Ratio</h5>
+              <canvas id="claimChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+new Chart(document.getElementById('claimChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Settled', 'Pending', 'Rejected'],
+    datasets: [{
+      data: [70, 20, 10]
+    }]
+  }
+});
+</script>
+
+</body>
+</html>
